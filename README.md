@@ -4,7 +4,7 @@
 1. [Problem Space](#problem-space)
 2. [Current State Analysis](#current-state-analysis)
 3. [The OpenUnited Solution](#the-openunited-solution)
-4. [Implementation Details](#implementation-details)
+4. [Implementation Outline](#implementation)
 5. [Benefits & ROI](#benefits-roi)
 6. [Technical Architecture](#technical-architecture)
 
@@ -249,52 +249,11 @@ For example, with 800 total engineers across 100 products:
    - Uniform documentation structure
    - Reduced onboarding friction
 
-## Implementation Sketch for Simuation
+## Implementation
 
-- Full stack django application allowing scenarios to be run and parameters to be tweaked
-- Reports of likely benefits output
-
-### Technical Architecture
-
-```python
-# Core Models
-class Engineer(models.Model):
-    name = models.CharField(max_length=100)
-    skill_set = models.JSONField()  # List of skills
-    ai_proficiency = models.FloatField()  # 0-1 scale
-    monthly_points = models.IntegerField(default=0)
-    core_team_product = models.ForeignKey('Product', null=True, blank=True)
-
-class Product(models.Model):
-    name = models.CharField(max_length=100)
-    core_team_size = models.IntegerField(default=2)
-    monthly_point_budget = models.IntegerField()
-
-class Bounty(models.Model):
-    product = models.ForeignKey(Product)
-    title = models.CharField(max_length=200)
-    points = models.IntegerField()
-    ai_friendly = models.BooleanField()
-    claimed_by = models.ForeignKey(Engineer, null=True)
-    completed = models.BooleanField(default=False)
-```
-
-### Service Layer
-
-```python
-class MarketplaceService:
-    @staticmethod
-    def publish_bounty(product_id: int, title: str, points: int) -> Bounty:
-        """Creates and publishes a new bounty"""
-        
-    @staticmethod
-    def claim_bounty(bounty_id: int, engineer_id: int) -> bool:
-        """Engineer claims an available bounty"""
-        
-    @staticmethod
-    def complete_bounty(bounty_id: int) -> bool:
-        """Marks bounty as complete and awards points"""
-```
+- Input: specify scenario and parameters (e.g. number of engineers, various factors related to dependencies and efficiency)
+- Output: reports of likely benefits output
+- Stack: django application with simple but attractive UI, will be operated on simulation.openunited.com or similar
 
 ## Benefits & ROI
 

@@ -249,7 +249,10 @@ For example, with 800 total engineers across 100 products:
    - Uniform documentation structure
    - Reduced onboarding friction
 
-## Implementation Details
+## Implementation Sketch for Simuation
+
+- Full stack django application allowing scenarios to be run and parameters to be tweaked
+- Reports of likely benefits output
 
 ### Technical Architecture
 
